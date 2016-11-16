@@ -26,22 +26,23 @@ This tutorial describes the process of taking your Microsoft Azure IoT Starter K
 
 ## Table of Contents
 
-- [1.1 Tutorial Overview](#11-tutorial-overview)
-- [1.2 Before Starting](#12-before-starting)
-  - [1.2.1 Required Software](#121-required-software)
-  - [1.2.2 Required Hardware](#122-required-hardware)
-- [1.3 Create a New Azure IoT Suite Remote Monitoring solution and Add Device](#13-create-a-new-azure-iot-suite-remote-monitoring-solution-and-add-device)
-- [1.4 Prepare the Device](#14-prepare-the-device)
-  - [1.4.1 Log in and Access the Terminal](#141-log-in-and-access-the-terminal)
-  - [1.4.2 Log in Using PuTTY](#142-log-in-using-putty)
-    - [1.4.2.1 Log in using Linux or Mac OS](#1421-log-in-using-linux-or-mac-os)
-- [1.5 Configure the Remote Monitoring device sample](#15-configure-the-remote-monitoring-device-sample)
-  - [1.5.1 Clone repositories](#151-clone-repositories)
-  - [1.5.2 Update the Connection String](#152-update-the-connection-string)
-- [1.6 Build the Modified Sample](#16-build-the-modified-sample)
-- [1.7 View the Sensor Data from the IoT Suite Portal](#17-view-the-sensor-data-from-the-iot-suite-portal)
-- [1.8 Next steps](#18-next-steps)
+- [1.1 Tutorial Overview](#section1.1)
+- [1.2 Before Starting](#section1.2)
+  - [1.2.1 Required Software](#section1.2.1)
+  - [1.2.2 Required Hardware](#section1.2.2)
+- [1.3 Create a New Azure IoT Suite Remote Monitoring solution and Add Device](#section1.3)
+- [1.4 Prepare the Device](#section1.4)
+  - [1.4.1 Log in and Access the Terminal](#section1.4.1)
+  - [1.4.2 Log in Using PuTTY](#section1.4.2)
+    - [1.4.2.1 Log in using Linux or Mac OS](#section1.4.2.1)
+- [1.5 Configure the Remote Monitoring device sample](#section1.5)
+  - [1.5.1 Clone repositories](#section1.5.1)
+  - [1.5.2 Update the Connection String](#section1.5.2)
+- [1.6 Build the Modified Sample](#section1.6)
+- [1.7 View the Sensor Data from the IoT Suite Portal](#section1.7)
+- [1.8 Next steps](#section1.8)
 
+<a name="section1.1" />
 ## 1.1 Tutorial Overview
 
 In this tutorial, you'll be doing the following:
@@ -50,8 +51,10 @@ In this tutorial, you'll be doing the following:
 - Setting your device and sensors up so that it can communicate with both your computer, and Azure IoT.
 - Updating the device code sample to include our connection data and send it to Azure IoT to be viewed remotely.
 
+<a name="section1.2" />
 ## 1.2 Before Starting
 
+<a name="section1.2.1" />
 ### 1.2.1 Required Software
 
 - An SSH client – This makes it so you can remotely access the Raspberry Pi’s command line remotely from your computer
@@ -59,6 +62,7 @@ In this tutorial, you'll be doing the following:
   - Many Linux distributions and Mac OS has SSH built into their terminal. If yours does not, we recommend OpenSSH
   - See also: [SSH Using Linux or Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md)
 
+<a name="section1.2.2" />
 ### 1.2.2 Required Hardware
 
 - Microsoft Azure IoT Starter Kit
@@ -66,6 +70,7 @@ In this tutorial, you'll be doing the following:
   - A USB Mini cable
   - An Ethernet cable or Wi-Fi dongle
 
+<a name="section1.3" />
 ## 1.3 Create a New Azure IoT Suite Remote Monitoring solution and Add Device
 
 - Log in to [Azure IoT Suite](https://www.azureiotsuite.com/)  with your Microsoft account and click **Create a New Preconfigured Solution**
@@ -105,7 +110,8 @@ In this tutorial, you'll be doing the following:
 3) **Stop** your remote monitoring solution while you are working on the next steps. (See: [Troubleshooting](#troubleshooting))
 ***
 
-##1.4 Prepare the Device
+<a name="section1.4" />
+## 1.4 Prepare the Device
 
 If this is the first time you are using Raspberry Pi, now is the time to set it up. If you’ll be using Windows, please use [windowsondevices.com](http://www.windowsondevices.com/) for detailed
 guidelines on how to get started with the Raspberry Pi. If you’re using Linux, Raspberry Pi and Adafruit have a set of tutorials and videos to help you get started.
@@ -130,10 +136,12 @@ Please visit the following links:
 
 **At the end of your work, your Raspberry Pi should be connected with a working sensor.**
 
+<a name="section1.4.1" />
 ### 1.4.1 Log in and Access the Terminal
 
 The default login for Raspbian is username `pi` with password `raspberry`. If you use the Raspbian interface directly, in the task bar up top, you can launch the Terminal using the 3rd icon from the left – The one that looks like a monitor.
 
+<a name="section1.4.2" />
 ### 1.4.2 Log in Using PuTTY
 
 - You need to discover the IP address of your Raspberry Pi before you can connect using PuTTY. Type `hostname -I` in a command prompt to discover your IP. For more information see: [https://www.raspberrypi.org/documentation/remote-access/ip-address.md](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)
@@ -141,14 +149,17 @@ The default login for Raspbian is username `pi` with password `raspberry`. If yo
 - Use the IP address from previous step as the Host Name, Port=22, and Connection type=SSH to complete the connection.
 - When prompted, log in with username `pi`, and password `raspberry`.
 
+<a name="section1.4.2.1" />
 #### 1.4.2.1 Log in using Linux or Mac OS
 
 - See: [SSH Using Linux of Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md)
 
+<a name="section1.5" />
 ## 1.5 Configure the Remote Monitoring device sample
 
 Now we can download the Remote Monitoring device sample, input your device credentials (i.e. your "Connection String") and start sending data from the Pi to our Azure Remote Monitoring solution.
 
+<a name="section1.5.1" />
 ### 1.5.1 Clone repositories
 
 Clone the following repositories and combine them by entering the following commands on your Pi:
@@ -161,6 +172,7 @@ git clone --recursive https://github.com/WiringPi/WiringPi.git
 
 Now, we need to update device connection string
 
+<a name="section1.5.2" />
 ### 1.5.2 Update the Connection String
 
 - Edit the file by entering the following command:
@@ -184,6 +196,7 @@ static const char* hubSuffix = "[IoTHub Suffix, i.e. azure-devices.net]";
   - IoTHub Suffix, i.e. azure-devices.net --> `azure-devices.net`
 - Save and exit with `Control-o, Enter, Control-x`
 
+<a name="section1.6" />
 ## 1.6 Build the Modified Sample
 
 Now that you’re exited out of Nano, install the prerequisite packages for the Microsoft Azure IoT Device SDK for C by issuing the following commands using the terminal (either on the device or through an SSH client like PuTTY):
@@ -237,6 +250,7 @@ Sending sensor value Temperature = 23.9*C, Humidity = 48.4%
 IoTHubClient accepted the message for delivery
 ```
 
+<a name="section1.7" />
 ## 1.7 View the Sensor Data from the IoT Suite Portal
 
 - Once you have the sample running, visit your dashboard by visiting azureiotsuite.com and clicking “Launch” on your solution
@@ -247,6 +261,7 @@ IoTHubClient accepted the message for delivery
 **Note:** Make sure you delete or **stop** your remote monitoring solution once you have completed this to avoid unnecessary Azure consumption!  (See: [Troubleshooting](#troubleshooting))
 ***
 
+<a name="section1.8" />
 ## 1.8 Next steps
 
 Please visit our [Azure IoT Dev Center](https://azure.microsoft.com/en-us/develop/iot/) for more samples and documentation on Azure IoT.
@@ -260,24 +275,24 @@ please visit [windowsondevices.com](http://www.windowsondevices.com/).
 
 ## Table of Contents
 
-- [2.1 Tutorial Overview](#21-tutorial-overview)
-- [2.2 Requirements](#22-requirements)
-  - [2.2.1 Required Software](#221-required-software)
-  - [2.2.2 Required Hardware](#222-required-hardware)
-- [2.3 Create a New Microsoft Azure IoT Hub and Add Device](#23-create-a-new-microsoft-azure-iot-hub-and-add-device)
-- [2.4 Prepare the Device](#24-prepare-the-device)
-  - [2.4.1 Log in and Access the Terminal](#241-log-in-and-access-the-terminal)
-  - [2.4.2 Log in Using PuTTY](#242-log-in-using-putty)
-- [2.5 Create an Event Hub](#25-create-an-event-hub)
-- [2.6 Create a Storage Account for Table Storage](#26-create-a-storage-account-for-table-storage)
-- [2.7 Create a Stream Analytics job to Save Sensor Data in Table Storage and Raise Alerts](#27-create-a-stream-analytics-job-to-save-iot-data-in-table-storage-and-raise-alerts)
-- [2.8 Node Application Setup](#28-node-application-setup)
-- [2.9 Configure the Command Center device sample](#29-configure-the-command-center-device-sample)
-  - [2.9.1 Update the Connection Data](#291-update-the-connection-data)
-- [2.10 Build the Modified Sample](#210-build-the-modified-sample)
-- [2.11 Next steps](#211-next-steps)
+- [2.1 Tutorial Overview](#section2.1)
+- [2.2 Requirements](#section2.2)
+  - [2.2.1 Required Software](#section2.2.1)
+  - [2.2.2 Required Hardware](#section2.2.2)
+- [2.3 Create a New Microsoft Azure IoT Hub and Add Device](#section2.3)
+- [2.4 Prepare the Device](#section2.4)
+  - [2.4.1 Log in and Access the Terminal](#section2.4.1)
+  - [2.4.2 Log in Using PuTTY](#section2.4.2)
+- [2.5 Create an Event Hub](#section2.5)
+- [2.6 Create a Storage Account for Table Storage](#section2.6)
+- [2.7 Create a Stream Analytics job to Save Sensor Data in Table Storage and Raise Alerts](#section2.7)
+- [2.8 Node Application Setup](#section2.8)
+- [2.9 Configure the Command Center device sample](#section2.9)
+  - [2.9.1 Update the Connection Data](#section2.9.1)
+- [2.10 Build the Modified Sample](#section2.10)
+- [2.11 Next steps](#section2.11)
 
-
+<a name="section2.1" />
 ## 2.1 Tutorial Overview
 
 This tutorial has the following steps:
@@ -294,8 +309,10 @@ Here is a breakdown of the data flow:
 
 The end result will be a functional command center where you can view the history of your device's sensor data, a history of alerts, and send commands back to the device.
 
+<a name="section2.2" />
 ## 2.2 Requirements
 
+<a name="section2.2.1" />
 ### 2.2.1 Required Software
 
 - [Git](https://git-scm.com/downloads) - For cloning the required repositories
@@ -305,6 +322,7 @@ The end result will be a functional command center where you can view the histor
   - Many Linux distributions and Mac OS has SSH built into their terminal. If yours does not, we recommend OpenSSH
   - See also: [SSH Using Linux on Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md)
 
+<a name="section2.2.2" />
 ### 2.2.2 Required Hardware
 
 - Microsoft Azure IoT Starter Kit
@@ -312,6 +330,7 @@ The end result will be a functional command center where you can view the histor
   - A USB Mini cable
   - An Ethernet cable or Wi-Fi dongle
 
+<a name="section2.3" />
 ## 2.3 Create a New Microsoft Azure IoT Hub and Add Device
 
 - To create your Microsoft Azure IoT Hub and add a device, follow the instructions outlined in the [Setup IoT Hub Microsoft Azure Iot SDK page](https://github.com/Azure/azure-iot-sdks/blob/master/doc/setup_iothub.md).
@@ -323,6 +342,7 @@ The end result will be a functional command center where you can view the histor
 
 - After creating your device, make note of your connection string to enter into the code you’ll run on your device later
 
+<a name="section2.4" />
 ## 2.4 Prepare the Device
 
 If this is the first time you are using Raspberry Pi, now it’s the time to set it up. If you’ll be using Windows, please use [windowsondevices.com](http://www.windowsondevices.com/) for detail
@@ -360,10 +380,12 @@ Please visit the following links:
 
 **At the end of your work, your Raspberry Pi should be connected with a working sensor.**
 
+<a name="section2.4.1" />
 ### 2.4.1 Log in and Access the Terminal
 
 The default login for Raspbian is username `pi` with password `raspberry`. If you use the Raspbian interface directly, in the task bar up top, you can launch the Terminal using the 3rd icon from the left – The one that looks like a monitor.
 
+<a name="section2.4.2" />
 ### 2.4.2 Log in Using PuTTY
 
 - You need to discover the IP address of your Raspberry Pi before you can connect using PuTTY. Type `hostname -I` in a command prompt to discover your IP.For more information see: [https://www.raspberrypi.org/documentation/remote-access/ip-address.md](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)
@@ -371,6 +393,7 @@ The default login for Raspbian is username `pi` with password `raspberry`. If yo
 - Use the IP address from previous step as the Host Name, Port=22, and Connection type=SSH to complete the connection.
 - When prompted, log in with username `pi`, and password `raspberry`.
 
+<a name="section2.5" />
 ## 2.5 Create an Event Hub
 Event Hub is an Azure IoT publish-subscribe service that can ingest millions of events per second and stream them into multiple applications, services or devices.
 
@@ -398,6 +421,7 @@ Event Hub is an Azure IoT publish-subscribe service that can ingest millions of 
 - From the your IoT Hub Settings (The Resource that has connected dots) on the [Microsoft Azure Portal](https://portal.azure.com/), click the **Messaging blade** (found in your settings), write down the _Event Hub-compatible name_
 - Look at the _Event-hub-compatible Endpoint_, and write down this part: sb://**thispart**.servicebus.windows.net/ we will call this one the _IoTHub EventHub-compatible namespace_
 
+<a name="section2.6" />
 ## 2.6 Create a Storage Account for Table Storage
 Now we will create a service to store our data in the cloud.
 - Log on to the [Microsoft Azure Portal](https://portal.azure.com/)
@@ -411,6 +435,7 @@ Now we will create a service to store our data in the cloud.
     - Location: `Your choice`
 - Once the account is created, find it in the **resources blade** or click on the **pinned tile**, go to **Settings**, **Keys**, and write down the _primary connection string_.
 
+<a name="section2.7" />
 ## 2.7 Create a Stream Analytics job to Save Sensor Data in Table Storage and Raise Alerts
 Stream Analytics is an Azure IoT service that streams and analyzes data in the cloud. We'll use it to process data coming from your device.
 
@@ -488,6 +513,7 @@ WHERE MTemperature>25
 **Note:** Make sure to **stop** your Command Center jobs once you have when you take a break or finish to avoid unnecessary Azure consumption!  (See: [Troubleshooting](#troubleshooting))
 ***
 
+<a name="section2.8" />
 ## 2.8 Node Application Setup
 
  - If you do not have it already, install Node.js and NPM.
@@ -580,6 +606,7 @@ To deploy this project to the cloud using Azure, you can reference [Creating a N
 
 Next, we will update your device so that it can interact with all the things you just created.
 
+<a name="section2.9" />
 ## 2.9 Configure the Command Center device sample
 
 Now we can download the sample solution repos and incorporate the data from the sensors and send it up to our Microsoft Azure Command Center solution.
@@ -598,6 +625,7 @@ Now, we need to update three things:
 - Include the Device ID
 - Update the connection string to use the string we saved above
 
+<a name="section2.9.1" />
 ### 2.9.1 Update the Connection Data
 
 To update the connection data, we need to update the source file. You can edit the file by entering the following command:
@@ -616,6 +644,7 @@ static char* deviceId = "[Device Name]";
 - Replace the placeholder with your device connection information you gathered at the beginning of this tutorial. It must looks like `HostName=<host_name>.azure-devices.net;DeviceId=<device_id>;SharedAccessKey=<device_key>`.
 - Save and exit with `Control-o, Enter, Control-x`
 
+<a name="section2.10" />
 ## 2.10 Build the Modified Sample
 
 Now that you’re exited out of Nano, install the prerequisite packages for the Microsoft Azure IoT Device SDK for C by issuing the following commands using the terminal (either on the device or through an SSH client like PuTTY):
@@ -673,6 +702,7 @@ Head back to your Node application and you will have a fully functional command 
 **Note:** Make sure to **stop** your Command Center jobs once you have when you finish to avoid unnecessary Azure consumption!  (See: [Troubleshooting](#troubleshooting))
 ***
 
+<a name="section2.11" />
 ## 2.11 Next steps
 
 Please visit our [Azure IoT Dev Center](https://azure.microsoft.com/en-us/develop/iot/) for more samples and documentation on Azure IoT.
