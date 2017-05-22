@@ -61,7 +61,8 @@ In this tutorial, you'll be doing the following:
   - Windows doesn’t have a built-in SSH client. We recommend using [PuTTY](http://www.putty.org/)
   - Many Linux distributions and Mac OS has SSH built into their terminal. If yours does not, we recommend OpenSSH
   - See also: [SSH Using Linux or Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md)
-
+  - Do this!
+  
 <a name="section1.2.2" />
 ### 1.2.2 Required Hardware
 
